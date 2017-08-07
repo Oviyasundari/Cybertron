@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="frametest/src/main/java"/>
+	<classpathentry kind="src" path="frametest/src/test/java"/>
+	<classpathentry kind="lib" path="frametest/target/frametest-0.0.1-SNAPSHOT.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/3"/>
+	<classpathentry kind="output" path="frametest/target/classes"/>
+</classpath>
