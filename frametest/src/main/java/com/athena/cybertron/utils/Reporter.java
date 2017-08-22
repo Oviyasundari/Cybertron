@@ -16,8 +16,8 @@ import com.relevantcodes.extentreports.LogStatus;
 
 public class Reporter {
 	// reporter code comes here
-	ExtentReports report;
-	ExtentTest logger;
+	public static ExtentReports report;
+	public static ExtentTest logger;
 	public static RemoteWebDriver driver;
 
 	@BeforeSuite
