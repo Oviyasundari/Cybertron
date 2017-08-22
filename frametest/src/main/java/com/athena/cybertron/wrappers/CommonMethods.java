@@ -1,4 +1,4 @@
-package com.athena.frametest.wrappers;
+package com.athena.cybertron.wrappers;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -20,32 +20,26 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.Select;
 
-import com.athena.frametest.utils.Reporter;
+import com.athena.cybertron.utils.CommonUtils;
+import com.athena.cybertron.utils.Reporter;
 
 public class CommonMethods extends Reporter implements Wrappers {
 
-	public RemoteWebDriver driver;
 	protected static Properties prop;
 	public String sUrl, primaryWindowHandle, sHubUrl, sHubPort;
+	public static String dataSheetName;
+	/*
+	 * public CommonMethods() { try { prop.load(new FileInputStream(new
+	 * File("frametest/src/main/java/config.properties"))); sHubUrl =
+	 * prop.getProperty("HUB"); sHubPort = prop.getProperty("PORT"); sUrl =
+	 * prop.getProperty("URL"); } catch (FileNotFoundException e) {
+	 * e.printStackTrace(); } catch (IOException e) { e.printStackTrace(); } }
+	 */
 
-	public CommonMethods() {
-		Properties prop = new Properties();
-		try {
-			prop.load(new FileInputStream(new File("config.properties")));
-			sHubUrl = prop.getProperty("HUB");
-			sHubPort = prop.getProperty("PORT");
-			sUrl = prop.getProperty("URL");
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
-	public void loadObjects() {
+	public void loadConfig() {
 		prop = new Properties();
 		try {
-			prop.load(new FileInputStream(new File("object.properties")));
+			prop.load(new FileInputStream(new File("./src/main/java/config.properties")));
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -61,20 +55,24 @@ public class CommonMethods extends Reporter implements Wrappers {
 	}
 
 	/**
-	 * This method will launch the browser in local machine and maximise the
-	 * browser and set the wait for 30 seconds and load the url
+	 * This method will launch the browser in local machine and maximise the browser
+	 * and set the wait for 30 seconds and load the url
 	 *
 	 * @param url
 	 *            - The url with http or https
 	 * 
 	 */
-	public void invokeApp(String browser) {
+	public void invokeApp() {
+
+		prop = CommonUtils.getConfigProperties();
+		String browser = prop.getProperty("browser");
+		sUrl = prop.getProperty("baseUrl");
 		invokeApp(browser, false);
 	}
 
 	/**
-	 * This method will launch the browser in grid node (if remote) and maximise
-	 * the browser and set the wait for 30 seconds and load the url
+	 * This method will launch the browser in grid node (if remote) and maximise the
+	 * browser and set the wait for 30 seconds and load the url
 	 *
 	 * @param url
 	 *            - The url with http or https
@@ -83,11 +81,13 @@ public class CommonMethods extends Reporter implements Wrappers {
 
 	public void invokeApp(String browser, boolean bRemote) {
 		try {
+			System.out.println(browser);
 			DesiredCapabilities dc = new DesiredCapabilities();
 			dc.setBrowserName(browser);
 			dc.setPlatform(Platform.WINDOWS);
-
-			prop.load(new FileInputStream(new File("frametest/src/main/java/config.properties")));
+			System.out.println(browser);
+			// prop.load(new FileInputStream(new
+			// File("frametest/src/main/java/config.properties")));
 
 			// this is for grid run
 			if (bRemote)
@@ -107,6 +107,7 @@ public class CommonMethods extends Reporter implements Wrappers {
 			driver.get(sUrl);
 
 			primaryWindowHandle = driver.getWindowHandle();
+			System.out.println("browser lan");
 			reportStep("The browser:" + browser + " launched successfully", "PASS");
 
 		} catch (Exception e) {
@@ -127,12 +128,19 @@ public class CommonMethods extends Reporter implements Wrappers {
 	 */
 	public void enterById(String idValue, String data) {
 		try {
+			System.out.println("dsfasdfa");
+			System.out.println(idValue + "\n" + data);
+			System.out.println(driver);
 			driver.findElement(By.id(idValue)).clear();
+			System.out.println("after clear");
 			driver.findElement(By.id(idValue)).sendKeys(data);
+			System.out.println("after send keys");
 			reportStep("The data: " + data + " entered successfully in field :" + idValue, "PASS");
 		} catch (NoSuchElementException e) {
+			System.out.println("no suchi");
 			reportStep("The data: " + data + " could not be entered in the field :" + idValue, "FAIL");
 		} catch (Exception e) {
+			System.out.println("no ex");
 			reportStep("Unknown exception occured while entering " + data + " in the field :" + idValue, "FAIL");
 		}
 	}
@@ -347,6 +355,11 @@ public class CommonMethods extends Reporter implements Wrappers {
 	}
 
 	public void quitBrowser() {
+		driver.quit();
+
+	}
+
+	public void invokeApp(String url) {
 		// TODO Auto-generated method stub
 
 	}
