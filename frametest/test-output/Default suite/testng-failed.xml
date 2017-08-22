@@ -10,7 +10,6 @@
           <include name="logout"/>
           <include name="startReport"/>
           <include name="endReport"/>
-          <include name="quit"/>
         </methods>
       </class> <!-- com.athena.cybertron.tests.CartTest -->
     </classes>

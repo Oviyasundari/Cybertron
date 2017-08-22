@@ -2,20 +2,20 @@
 <testng-results skipped="0" failed="1" ignored="0" total="1" passed="0">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="10747" started-at="2017-08-22T12:45:03Z" finished-at="2017-08-22T12:45:13Z">
+  <suite name="Suite" duration-ms="11098" started-at="2017-08-22T13:08:54Z" finished-at="2017-08-22T13:09:05Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="10747" started-at="2017-08-22T12:45:03Z" finished-at="2017-08-22T12:45:13Z">
+    <test name="Test" duration-ms="11098" started-at="2017-08-22T13:08:54Z" finished-at="2017-08-22T13:09:05Z">
       <class name="com.athena.cybertron.tests.CartTest">
-        <test-method status="PASS" signature="startReport()[pri:0, instance:com.athena.cybertron.tests.CartTest@5702b3b1]" name="startReport" is-config="true" duration-ms="266" started-at="2017-08-22T18:15:02Z" finished-at="2017-08-22T18:15:03Z">
+        <test-method status="PASS" signature="startReport()[pri:0, instance:com.athena.cybertron.tests.CartTest@25bbe1b6]" name="startReport" is-config="true" duration-ms="287" started-at="2017-08-22T18:38:54Z" finished-at="2017-08-22T18:38:54Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- startReport -->
-        <test-method status="PASS" signature="login()[pri:0, instance:com.athena.cybertron.tests.CartTest@5702b3b1]" name="login" is-config="true" duration-ms="9017" started-at="2017-08-22T18:15:03Z" finished-at="2017-08-22T18:15:12Z">
+        <test-method status="PASS" signature="login()[pri:0, instance:com.athena.cybertron.tests.CartTest@25bbe1b6]" name="login" is-config="true" duration-ms="9290" started-at="2017-08-22T18:38:55Z" finished-at="2017-08-22T18:39:04Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- login -->
-        <test-method status="FAIL" signature="testCase(java.lang.String, java.lang.String)[pri:0, instance:com.athena.cybertron.tests.CartTest@5702b3b1]" name="testCase" duration-ms="195" started-at="2017-08-22T18:15:12Z" data-provider="xlData" finished-at="2017-08-22T18:15:13Z">
+        <test-method status="FAIL" signature="testCase(java.lang.String, java.lang.String)[pri:0, instance:com.athena.cybertron.tests.CartTest@25bbe1b6]" name="testCase" duration-ms="246" started-at="2017-08-22T18:39:04Z" data-provider="xlData" finished-at="2017-08-22T18:39:04Z">
           <params>
             <param index="0">
               <value>
@@ -66,19 +66,15 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testCase -->
-        <test-method status="PASS" signature="logout()[pri:0, instance:com.athena.cybertron.tests.CartTest@5702b3b1]" name="logout" is-config="true" duration-ms="984" started-at="2017-08-22T18:15:13Z" finished-at="2017-08-22T18:15:13Z">
+        <test-method status="PASS" signature="logout()[pri:0, instance:com.athena.cybertron.tests.CartTest@25bbe1b6]" name="logout" is-config="true" duration-ms="933" started-at="2017-08-22T18:39:04Z" finished-at="2017-08-22T18:39:05Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logout -->
-        <test-method status="PASS" signature="quit()[pri:0, instance:com.athena.cybertron.tests.CartTest@5702b3b1]" name="quit" is-config="true" duration-ms="1" started-at="2017-08-22T18:15:13Z" finished-at="2017-08-22T18:15:13Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- quit -->
-        <test-method status="PASS" signature="endReport()[pri:0, instance:com.athena.cybertron.tests.CartTest@5702b3b1]" name="endReport" is-config="true" duration-ms="292" started-at="2017-08-22T18:15:14Z" finished-at="2017-08-22T18:15:14Z">
+        <test-method status="PASS" signature="endReport()[pri:0, instance:com.athena.cybertron.tests.CartTest@25bbe1b6]" name="endReport" is-config="true" duration-ms="281" started-at="2017-08-22T18:39:05Z" finished-at="2017-08-22T18:39:05Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- endReport -->
       </class> <!-- com.athena.cybertron.tests.CartTest -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
 </testng-results>

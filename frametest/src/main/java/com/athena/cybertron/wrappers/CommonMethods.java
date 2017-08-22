@@ -81,11 +81,9 @@ public class CommonMethods extends Reporter implements Wrappers {
 
 	public void invokeApp(String browser, boolean bRemote) {
 		try {
-			System.out.println(browser);
 			DesiredCapabilities dc = new DesiredCapabilities();
 			dc.setBrowserName(browser);
 			dc.setPlatform(Platform.WINDOWS);
-			System.out.println(browser);
 			// prop.load(new FileInputStream(new
 			// File("frametest/src/main/java/config.properties")));
 
@@ -107,7 +105,6 @@ public class CommonMethods extends Reporter implements Wrappers {
 			driver.get(sUrl);
 
 			primaryWindowHandle = driver.getWindowHandle();
-			System.out.println("browser lan");
 			reportStep("The browser:" + browser + " launched successfully", "PASS");
 
 		} catch (Exception e) {
@@ -128,19 +125,13 @@ public class CommonMethods extends Reporter implements Wrappers {
 	 */
 	public void enterById(String idValue, String data) {
 		try {
-			System.out.println("dsfasdfa");
-			System.out.println(idValue + "\n" + data);
-			System.out.println(driver);
 			driver.findElement(By.id(idValue)).clear();
-			System.out.println("after clear");
 			driver.findElement(By.id(idValue)).sendKeys(data);
-			System.out.println("after send keys");
 			reportStep("The data: " + data + " entered successfully in field :" + idValue, "PASS");
 		} catch (NoSuchElementException e) {
 			System.out.println("no suchi");
 			reportStep("The data: " + data + " could not be entered in the field :" + idValue, "FAIL");
 		} catch (Exception e) {
-			System.out.println("no ex");
 			reportStep("Unknown exception occured while entering " + data + " in the field :" + idValue, "FAIL");
 		}
 	}

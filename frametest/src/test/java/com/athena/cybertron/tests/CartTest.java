@@ -11,7 +11,7 @@ public class CartTest extends FacebookWrapper {
 	@Test(dataProvider = "xlData", dataProviderClass = ExcelReader.class)
 	public void testCase(String uname, String pwd) {
 		HomePage homePage = new HomePage();
-		homePage.login();
+		homePage.login(uname, pwd);
 	}
 
 }
