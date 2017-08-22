@@ -27,8 +27,6 @@ public class Reporter {
 	}
 
 	public void reportStep(String message, String status) {
-		System.out.println("message=" + message);
-		System.out.println("status=" + status);
 		System.out.println("logger=" + logger);
 		if (status.equalsIgnoreCase("INFO")) {
 			logger.log(LogStatus.INFO, message);
