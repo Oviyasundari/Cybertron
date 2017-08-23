@@ -8,12 +8,6 @@ public class HomePage extends FacebookWrapper {
 	public Properties loginProp = loadProp("./pageObjects/homePage.properties");
 
 	public void login(String uname, String pwd) {
-		// System.out.println(loginProp.getProperty("emailID"));
-		// System.out.println(prop.getProperty("username"));
-		// enterById(loginProp.getProperty("emailID"), prop.getProperty("username"));
-		// enterById(loginProp.getProperty("passwordID"), prop.getProperty("password"));
-		System.out.println("uname=" + uname);
-		System.out.println("pwd=" + pwd);
 		enterById("email", uname);
 		enterById("pass", pwd);
 		clickById(loginProp.getProperty("loginButtonID"));
