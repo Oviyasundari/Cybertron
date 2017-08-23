@@ -6,7 +6,7 @@ import com.athena.cybertron.pages.HomePage;
 import com.athena.cybertron.utils.ExcelReader;
 import com.athena.cybertron.wrappers.FacebookWrapper;
 
-public class CartTest extends FacebookWrapper {
+public class FbLoginTest extends FacebookWrapper {
 
 	@Test(dataProvider = "xlData", dataProviderClass = ExcelReader.class)
 	public void testCase(String uname, String pwd) {

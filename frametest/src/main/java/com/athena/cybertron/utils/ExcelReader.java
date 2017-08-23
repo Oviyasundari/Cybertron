@@ -21,7 +21,7 @@ public class ExcelReader extends CommonMethods {
 	public static void getWorkBook() {
 
 		try {
-			prop = CommonUtils.getConfigProperties();
+			loadConfig();
 			FileInputStream file = new FileInputStream(new File("./data/" + prop.getProperty("loginFileName")));
 			workbook = new XSSFWorkbook(file);
 		} catch (Exception e) {
@@ -32,7 +32,7 @@ public class ExcelReader extends CommonMethods {
 
 	@DataProvider(name = "xlData")
 	public static String[][] getExcelSheetData() {
-		prop = CommonUtils.getConfigProperties();
+		loadConfig();
 		getWorkBook();
 		sheet = workbook.getSheet(prop.getProperty("loginSheetName"));
 		return getData();

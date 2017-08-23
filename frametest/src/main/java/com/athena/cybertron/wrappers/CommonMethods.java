@@ -20,12 +20,11 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.Select;
 
-import com.athena.cybertron.utils.CommonUtils;
 import com.athena.cybertron.utils.Reporter;
 
 public class CommonMethods extends Reporter implements Wrappers {
 
-	protected static Properties prop;
+	public static Properties prop;
 	public String sUrl, primaryWindowHandle, sHubUrl, sHubPort;
 	public static String dataSheetName;
 	/*
@@ -36,7 +35,7 @@ public class CommonMethods extends Reporter implements Wrappers {
 	 * e.printStackTrace(); } catch (IOException e) { e.printStackTrace(); } }
 	 */
 
-	public void loadConfig() {
+	public static void loadConfig() {
 		prop = new Properties();
 		try {
 			prop.load(new FileInputStream(new File("./src/main/java/config.properties")));
@@ -64,7 +63,7 @@ public class CommonMethods extends Reporter implements Wrappers {
 	 */
 	public void invokeApp() {
 
-		prop = CommonUtils.getConfigProperties();
+		loadConfig();
 		String browser = prop.getProperty("browser");
 		sUrl = prop.getProperty("baseUrl");
 		invokeApp(browser, false);
