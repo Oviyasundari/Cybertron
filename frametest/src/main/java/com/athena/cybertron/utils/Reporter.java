@@ -14,7 +14,7 @@ import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
-public class Reporter 
+public class Reporter {
 	public static ExtentReports report;
 	public static ExtentTest logger;
 	public static RemoteWebDriver driver;
