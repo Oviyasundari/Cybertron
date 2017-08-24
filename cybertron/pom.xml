@@ -15,6 +15,7 @@
 	</properties>
 
 	<dependencies>
+		<!-- excel dependencies -->
 		<dependency>
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi</artifactId>
@@ -25,21 +26,109 @@
 			<artifactId>poi-ooxml</artifactId>
 			<version>3.10-FINAL</version>
 		</dependency>
+		<!-- selenium dependency -->
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
 			<version>3.4.0</version>
 		</dependency>
+		<!-- testng dependency -->
 		<dependency>
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
 			<version>6.10</version>
 			<scope>test</scope>
 		</dependency>
+		<!-- extent report dependency -->
 		<dependency>
 			<groupId>com.relevantcodes</groupId>
 			<artifactId>extentreports</artifactId>
 			<version>2.41.1</version>
 		</dependency>
+		<!-- email dependencies -->
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4.1</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.activation</groupId>
+			<artifactId>activation</artifactId>
+			<version>1.1.1</version>
+		</dependency>
 	</dependencies>
+	<build>
+		<plugins>
+			<!-- Surefire plugin to run xml files -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.18.1</version>
+				<configuration>
+					<suiteXmlFiles>
+						<!-- TestNG suite XML files -->
+						<suiteXmlFile>testng.xml</suiteXmlFile>
+					</suiteXmlFiles>
+				</configuration>
+			</plugin>
+			<!-- Post-Man plugin to send mail -->
+			<plugin>
+				<groupId>ch.fortysix</groupId>
+				<artifactId>maven-postman-plugin</artifactId>
+				<version>0.1.6</version>
+				<executions>
+					<execution>
+						<id>send a mail</id>
+						<phase>test</phase>
+						<goals>
+							<goal>send-mail</goal>
+						</goals>
+						<inherited>true</inherited>
+						<configuration>
+							<!-- From Email address -->
+							<from>cybertronathena@gmail.com</from>
+
+							<!-- Email subject -->
+							<subject>cybertron Test Report</subject>
+
+							<!-- Fail the build if the mail does not reach -->
+							<failonerror>true</failonerror>
+
+							<!-- host -->
+							<mailhost>smtp.gmail.com</mailhost>
+							<!-- port of the host -->
+							<mailport>465</mailport>
+							<mailssl>true</mailssl>
+							<mailAltConfig>true</mailAltConfig>
+							<!-- useActiveProxyAsHttpproxy>true</useActiveProxyAsHttpproxy -->
+
+							<!-- Email Authentication(USername and Password) -->
+							<mailuser>cybertronathena@gmail.com</mailuser>
+							<mailpassword>gmail@123</mailpassword>
+
+							<receivers>
+								<!-- To Email address -->
+								<receiver>athenateammates@gmail.com</receiver>
+							</receivers>
+							<htmlMessage>
+							<![CDATA[<p>Test results are attached !!!</p>]]>
+							</htmlMessage>
+							<fileSets>
+								<fileSet>
+									<!-- Report directory Path -->
+									<directory>./Results</directory>
+									<includes>
+										<!-- Report file name -->
+										<include>**/Report.html</include>
+									</includes>
+									<!-- Use Regular Expressions like **/*.html if you want all the 
+										html files to send -->
+								</fileSet>
+							</fileSets>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 </project>
