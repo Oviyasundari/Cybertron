@@ -12,6 +12,7 @@ public class FbLoginTest extends FacebookWrapper {
 	public void testCase(String uname, String pwd) {
 		HomePage homePage = new HomePage();
 		homePage.login(uname, pwd);
+		//call logout method to test negative test case
+		
 	}
-
 }

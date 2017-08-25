@@ -22,7 +22,7 @@ import org.openqa.selenium.support.ui.Select;
 
 import com.athena.cybertron.utils.Reporter;
 
-public class CommonMethods extends Reporter implements Wrappers {
+public class CommonMethods extends Reporter implements Iwrappers {
 
 	public static Properties prop;
 	public String sUrl, primaryWindowHandle, sHubUrl, sHubPort;

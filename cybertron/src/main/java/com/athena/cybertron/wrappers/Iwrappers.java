@@ -1,6 +1,6 @@
 package com.athena.cybertron.wrappers;
 
-public interface Wrappers {
+public interface Iwrappers {
 	/**
 	 * This method will launch the given browser and maximize the browser and set
 	 * the wait for 30 seconds and load the url

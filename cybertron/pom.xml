@@ -119,7 +119,7 @@
 									<directory>./Results</directory>
 									<includes>
 										<!-- Report file name -->
-										<include>**/Report.html</include>
+										<include>**/*.*</include>
 									</includes>
 									<!-- Use Regular Expressions like **/*.html if you want all the 
 										html files to send -->

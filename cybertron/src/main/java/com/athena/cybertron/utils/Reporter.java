@@ -7,6 +7,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.ITestResult;
+import org.testng.TestListenerAdapter;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 
@@ -14,14 +15,15 @@ import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
-public class Reporter {
+public class Reporter extends TestListenerAdapter {
 	public static ExtentReports report;
 	public static ExtentTest logger;
 	public static RemoteWebDriver driver;
+	public static String resultDirectory = "./Results";
 
 	@BeforeSuite
 	public void startReport() {
-		report = new ExtentReports("./Results/Report.html");
+		report = new ExtentReports(resultDirectory + "/Report.html");
 		logger = report.startTest("Report");
 	}
 
@@ -35,17 +37,24 @@ public class Reporter {
 		}
 	}
 
-	public void takeScreenShot(ITestResult result) {
-		if (result.getStatus() == ITestResult.FAILURE) {
-			String error_msg = captureScreenshot(result.getName());
-			reportStep(error_msg, "Fail");
-		}
+	@Override
+	public void onTestFailure(ITestResult result) {
+		System.out.println("***** Error " + result.getName() + " test has failed *****");
+		String error_msg = captureScreenshot(result.getName());
+		reportStep(error_msg, "FAIL");
 	}
 
+//	@Override
+//	public void onTestSuccess(ITestResult result) {
+//		System.out.println("***** Error " + result.getName() + " test has failed *****");
+//		String error_msg = captureScreenshot(result.getName());
+//		reportStep(error_msg, "PASS");
+//	}
+//	
 	public String captureScreenshot(String Screenshotname) {
 		TakesScreenshot ts = (TakesScreenshot) driver;
 		File src = ts.getScreenshotAs(OutputType.FILE);
-		String dest = "./screenshot/" + Screenshotname + ".png";
+		String dest = resultDirectory + "/" + Screenshotname + ".png";
 		File destination = new File(dest);
 		try {
 			FileUtils.copyFile(src, destination);
