@@ -9,10 +9,8 @@ import com.athena.cybertron.wrappers.FacebookWrapper;
 public class FbLoginTest extends FacebookWrapper {
 
 	@Test(dataProvider = "xlData", dataProviderClass = ExcelReader.class)
-	public void testCase(String uname, String pwd) {
+	public void loginTest(String uname, String pwd) {
 		HomePage homePage = new HomePage();
 		homePage.login(uname, pwd);
-		//call logout method to test negative test case
-		
 	}
 }

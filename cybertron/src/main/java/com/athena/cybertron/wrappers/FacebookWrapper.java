@@ -20,7 +20,6 @@ public class FacebookWrapper extends CommonMethods {
 
 	@AfterMethod
 	public void logout() {
-		
 		quitBrowser();
 	}
 

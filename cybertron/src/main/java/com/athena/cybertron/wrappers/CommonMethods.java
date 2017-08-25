@@ -5,13 +5,14 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
-import java.util.NoSuchElementException;
+
 import java.util.Properties;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -128,7 +129,6 @@ public class CommonMethods extends Reporter implements Iwrappers {
 			driver.findElement(By.id(idValue)).sendKeys(data);
 			reportStep("The data: " + data + " entered successfully in field :" + idValue, "PASS");
 		} catch (NoSuchElementException e) {
-			System.out.println("no suchi");
 			reportStep("The data: " + data + " could not be entered in the field :" + idValue, "FAIL");
 		} catch (Exception e) {
 			reportStep("Unknown exception occured while entering " + data + " in the field :" + idValue, "FAIL");

@@ -39,24 +39,25 @@ public class Reporter extends TestListenerAdapter {
 
 	@Override
 	public void onTestFailure(ITestResult result) {
-		System.out.println("***** Error " + result.getName() + " test has failed *****");
 		String error_msg = captureScreenshot(result.getName());
 		reportStep(error_msg, "FAIL");
 	}
 
-//	@Override
-//	public void onTestSuccess(ITestResult result) {
-//		System.out.println("***** Error " + result.getName() + " test has failed *****");
-//		String error_msg = captureScreenshot(result.getName());
-//		reportStep(error_msg, "PASS");
-//	}
-//	
+	@Override
+	public void onTestSuccess(ITestResult result) {
+		String error_msg = captureScreenshot(result.getName());
+		reportStep(error_msg, "PASS");
+	}
+
 	public String captureScreenshot(String Screenshotname) {
 		TakesScreenshot ts = (TakesScreenshot) driver;
 		File src = ts.getScreenshotAs(OutputType.FILE);
 		String dest = resultDirectory + "/" + Screenshotname + ".png";
 		File destination = new File(dest);
 		try {
+			if (destination.exists()) {
+				destination.delete();
+			}
 			FileUtils.copyFile(src, destination);
 			return dest;
 		} catch (Exception e) {
