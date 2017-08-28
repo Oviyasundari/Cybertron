@@ -4,8 +4,8 @@ import java.util.Properties;
 
 import com.athena.cybertron.wrappers.FacebookWrapper;
 
-public class HomePage extends FacebookWrapper {
-	public Properties homePageProp = loadProp("./pageObjects/homePage.properties");
+public class loginPage extends FacebookWrapper {
+	public Properties homePageProp = loadProp("./pageObjects/loginPage.properties");
 
 	public void login(String uname, String pwd) {
 		enterById(homePageProp.getProperty("emailID"), uname);
