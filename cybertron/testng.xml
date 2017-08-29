@@ -6,7 +6,7 @@
 	</listeners>
 	<test name="Test">
 		<classes>
-			<class name="com.athena.cybertron.tests.FbLoginTest" />
+			<class name="com.athena.cybertron.tests.LoginTest" />
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->

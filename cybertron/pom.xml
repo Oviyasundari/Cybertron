@@ -116,7 +116,7 @@
 							<fileSets>
 								<fileSet>
 									<!-- Report directory Path -->
-									<directory>./Results</directory>
+									<directory>./output</directory>
 									<includes>
 										<!-- Report file name -->
 										<include>**/*.*</include>

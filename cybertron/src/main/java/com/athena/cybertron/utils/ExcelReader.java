@@ -17,12 +17,14 @@ public class ExcelReader extends CommonMethods {
 	// static String src;
 	static XSSFWorkbook workbook;
 	static XSSFSheet sheet;
+	public static String inputDirectory = "./input";
 
 	public static void getWorkBook() {
 
 		try {
 			loadConfig();
-			FileInputStream file = new FileInputStream(new File("./data/" + prop.getProperty("loginFileName")));
+			FileInputStream file = new FileInputStream(
+					new File(inputDirectory + "/" + prop.getProperty("loginFileName")));
 			workbook = new XSSFWorkbook(file);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());

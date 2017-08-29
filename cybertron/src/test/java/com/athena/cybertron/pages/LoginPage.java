@@ -4,7 +4,7 @@ import java.util.Properties;
 
 import com.athena.cybertron.wrappers.FacebookWrapper;
 
-public class loginPage extends FacebookWrapper {
+public class LoginPage extends FacebookWrapper {
 	public Properties loginPageProp = loadProp("./pageObjects/loginPage.properties");
 
 	public void login(String uname, String pwd) {
