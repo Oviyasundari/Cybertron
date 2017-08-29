@@ -7,7 +7,6 @@
 	<test name="Test">
 		<classes>
 			<class name="com.athena.cybertron.tests.LoginTest" />
-			<class name="com.athena.cybertron.tests.InvalidLoginTest" />
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->
