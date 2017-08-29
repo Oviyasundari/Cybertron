@@ -3,15 +3,18 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
   <test name="Test(failed)">
     <classes>
-      <class name="com.athena.cybertron.tests.CartTest">
+      <class name="com.athena.cybertron.tests.LoginTest">
         <methods>
-          <include name="testCase" invocation-numbers="0"/>
-          <include name="login"/>
-          <include name="logout"/>
           <include name="startReport"/>
           <include name="endReport"/>
+          <include name="login"/>
         </methods>
-      </class> <!-- com.athena.cybertron.tests.CartTest -->
+      </class> <!-- com.athena.cybertron.tests.LoginTest -->
+      <class name="com.athena.cybertron.tests.InvalidLoginTest">
+        <methods>
+          <include name="Invalidlogin"/>
+        </methods>
+      </class> <!-- com.athena.cybertron.tests.InvalidLoginTest -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

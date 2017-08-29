@@ -1,21 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="2" passed="2">
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="35105" started-at="2017-08-22T13:18:17Z" finished-at="2017-08-22T13:18:52Z">
+  <suite name="Default suite" duration-ms="10598" started-at="2017-08-29T12:12:35Z" finished-at="2017-08-29T12:12:46Z">
     <groups>
     </groups>
-    <test name="Test" duration-ms="35105" started-at="2017-08-22T13:18:17Z" finished-at="2017-08-22T13:18:52Z">
-      <class name="com.athena.cybertron.tests.CartTest">
-        <test-method status="PASS" signature="startReport()[pri:0, instance:com.athena.cybertron.tests.CartTest@25bbe1b6]" name="startReport" is-config="true" duration-ms="274" started-at="2017-08-22T18:48:17Z" finished-at="2017-08-22T18:48:17Z">
+    <test name="Default test" duration-ms="10598" started-at="2017-08-29T12:12:35Z" finished-at="2017-08-29T12:12:46Z">
+      <class name="com.athena.cybertron.tests.InvalidLoginTest">
+        <test-method status="PASS" signature="startReport()[pri:0, instance:[InvalidLoginTest passed=0 failed=0 skipped=0]]" name="startReport" is-config="true" duration-ms="256" started-at="2017-08-29T17:42:35Z" finished-at="2017-08-29T17:42:35Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- startReport -->
-        <test-method status="PASS" signature="login()[pri:0, instance:com.athena.cybertron.tests.CartTest@25bbe1b6]" name="login" is-config="true" duration-ms="14244" started-at="2017-08-22T18:48:18Z" finished-at="2017-08-22T18:48:32Z">
+        <test-method status="PASS" signature="setValues()[pri:0, instance:[InvalidLoginTest passed=0 failed=0 skipped=0]]" name="setValues" is-config="true" duration-ms="1" started-at="2017-08-29T17:42:35Z" finished-at="2017-08-29T17:42:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setValues -->
+        <test-method status="PASS" signature="login()[pri:0, instance:[InvalidLoginTest passed=0 failed=0 skipped=0]]" name="login" is-config="true" duration-ms="6647" started-at="2017-08-29T17:42:36Z" finished-at="2017-08-29T17:42:43Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- login -->
-        <test-method status="PASS" signature="testCase(java.lang.String, java.lang.String)[pri:0, instance:com.athena.cybertron.tests.CartTest@25bbe1b6]" name="testCase" duration-ms="7343" started-at="2017-08-22T18:48:32Z" data-provider="xlData" finished-at="2017-08-22T18:48:39Z">
+        <test-method status="PASS" signature="Invalidlogin(java.lang.String, java.lang.String)[pri:0, instance:[InvalidLoginTest passed=0 failed=0 skipped=0]]" name="Invalidlogin" duration-ms="2305" started-at="2017-08-29T17:42:43Z" data-provider="xlData" finished-at="2017-08-29T17:42:45Z">
           <params>
             <param index="0">
               <value>
@@ -24,46 +28,22 @@
             </param>
             <param index="1">
               <value>
-                <![CDATA[facebook@123]]>
+                <![CDATA[123]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testCase -->
-        <test-method status="PASS" signature="logout()[pri:0, instance:com.athena.cybertron.tests.CartTest@25bbe1b6]" name="logout" is-config="true" duration-ms="912" started-at="2017-08-22T18:48:39Z" finished-at="2017-08-22T18:48:40Z">
+        </test-method> <!-- Invalidlogin -->
+        <test-method status="PASS" signature="logout()[pri:0, instance:[InvalidLoginTest passed=0 failed=0 skipped=0]]" name="logout" is-config="true" duration-ms="1130" started-at="2017-08-29T17:42:45Z" finished-at="2017-08-29T17:42:46Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logout -->
-        <test-method status="PASS" signature="login()[pri:0, instance:com.athena.cybertron.tests.CartTest@25bbe1b6]" name="login" is-config="true" duration-ms="8931" started-at="2017-08-22T18:48:40Z" finished-at="2017-08-22T18:48:49Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- login -->
-        <test-method status="PASS" signature="testCase(java.lang.String, java.lang.String)[pri:0, instance:com.athena.cybertron.tests.CartTest@25bbe1b6]" name="testCase" duration-ms="2287" started-at="2017-08-22T18:48:49Z" data-provider="xlData" finished-at="2017-08-22T18:48:51Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[324792379]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[askdfhs]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testCase -->
-        <test-method status="PASS" signature="logout()[pri:0, instance:com.athena.cybertron.tests.CartTest@25bbe1b6]" name="logout" is-config="true" duration-ms="828" started-at="2017-08-22T18:48:51Z" finished-at="2017-08-22T18:48:52Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- logout -->
-        <test-method status="PASS" signature="endReport()[pri:0, instance:com.athena.cybertron.tests.CartTest@25bbe1b6]" name="endReport" is-config="true" duration-ms="266" started-at="2017-08-22T18:48:52Z" finished-at="2017-08-22T18:48:52Z">
+        <test-method status="PASS" signature="endReport()[pri:0, instance:[InvalidLoginTest passed=0 failed=0 skipped=0]]" name="endReport" is-config="true" duration-ms="270" started-at="2017-08-29T17:42:46Z" finished-at="2017-08-29T17:42:46Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- endReport -->
-      </class> <!-- com.athena.cybertron.tests.CartTest -->
-    </test> <!-- Test -->
-  </suite> <!-- Suite -->
+      </class> <!-- com.athena.cybertron.tests.InvalidLoginTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
 </testng-results>

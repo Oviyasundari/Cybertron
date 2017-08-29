@@ -27,15 +27,7 @@ public class CommonMethods extends Reporter implements Iwrappers {
 
 	public static Properties prop;
 	public String sUrl, primaryWindowHandle, sHubUrl, sHubPort;
-	public static String dataSheetName;
-	/*
-	 * public CommonMethods() { try { prop.load(new FileInputStream(new
-	 * File("frametest/src/main/java/config.properties"))); sHubUrl =
-	 * prop.getProperty("HUB"); sHubPort = prop.getProperty("PORT"); sUrl =
-	 * prop.getProperty("URL"); } catch (FileNotFoundException e) {
-	 * e.printStackTrace(); } catch (IOException e) { e.printStackTrace(); } }
-	 */
-
+	
 	public static void loadConfig() {
 		prop = new Properties();
 		try {

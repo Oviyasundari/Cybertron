@@ -49,6 +49,12 @@ public class Reporter extends TestListenerAdapter {
 		reportStep(error_msg, "PASS");
 	}
 
+	@Override
+	public void onTestSkipped(ITestResult result) {
+		String error_msg = captureScreenshot(result.getName());
+		reportStep(error_msg, "PASS");
+	}
+	
 	public String captureScreenshot(String Screenshotname) {
 		TakesScreenshot ts = (TakesScreenshot) driver;
 		File src = ts.getScreenshotAs(OutputType.FILE);

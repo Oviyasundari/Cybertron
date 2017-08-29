@@ -9,34 +9,32 @@ import org.apache.poi.ss.usermodel.DateUtil;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.testng.annotations.DataProvider;
 
-import com.athena.cybertron.wrappers.CommonMethods;
 
-public class ExcelReader extends CommonMethods {
+
+public class ExcelReader {
 	// static String src;
 	static XSSFWorkbook workbook;
 	static XSSFSheet sheet;
-	public static String inputDirectory = "./input";
 
-	public static void getWorkBook() {
+	public static void getWorkBook(String dataSheetName) {
 
 		try {
-			loadConfig();
-			FileInputStream file = new FileInputStream(
-					new File(inputDirectory + "/" + prop.getProperty("loginFileName")));
-			workbook = new XSSFWorkbook(file);
+//			loadConfig();
+//			FileInputStream file = new FileInputStream(new File("./data/" + prop.getProperty("loginFileName")));
+			FileInputStream fis = new FileInputStream(new File("./input/"+dataSheetName+".xlsx"));
+			workbook = new XSSFWorkbook(fis);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 
 	}
 
-	@DataProvider(name = "xlData")
-	public static String[][] getExcelSheetData() {
-		loadConfig();
-		getWorkBook();
-		sheet = workbook.getSheet(prop.getProperty("loginSheetName"));
+	
+	public static String[][] getExcelSheetData(String fileName, String sheetName) {
+		
+		getWorkBook(fileName);
+		sheet = workbook.getSheet(sheetName);
 		return getData();
 	}
 
