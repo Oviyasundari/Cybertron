@@ -14,7 +14,7 @@ import com.athena.cybertron.utils.ExcelReader;
 
 public class FacebookWrapper extends CommonMethods {
 	public Properties faceBookProp;
-	public static String ExcelFileName,SheetName;
+	public static String ExcelFileName, SheetName;
 
 	@BeforeMethod
 	public void login() {
@@ -32,19 +32,16 @@ public class FacebookWrapper extends CommonMethods {
 		try {
 			faceBookProp.load(new FileInputStream(new File(propPath)));
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return faceBookProp;
 	}
-	
-	@DataProvider(name="xlData")
-	public Object[][] getData(){
-		
-		return ExcelReader.getExcelSheetData(ExcelFileName,SheetName);		
+
+	@DataProvider(name = "xlData")
+	public Object[][] getData() {
+		return ExcelReader.getExcelSheetData(ExcelFileName, SheetName);
 	}
 
 }

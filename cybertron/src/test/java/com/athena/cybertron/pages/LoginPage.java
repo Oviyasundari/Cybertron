@@ -6,6 +6,7 @@ import com.athena.cybertron.wrappers.FacebookWrapper;
 
 public class LoginPage extends FacebookWrapper {
 	public Properties loginPageProp = loadProp("./pageObjects/loginPage.properties");
+	public Properties invalidLoginPageProp = loadProp("./pageObjects/invalidLoginPage.properties");
 
 	public void login(String uname, String pwd) {
 		enterById(loginPageProp.getProperty("emailID"), uname);

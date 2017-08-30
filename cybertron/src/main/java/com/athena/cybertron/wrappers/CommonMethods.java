@@ -33,10 +33,8 @@ public class CommonMethods extends Reporter implements Iwrappers {
 		try {
 			prop.load(new FileInputStream(new File("./src/main/java/config.properties")));
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -76,8 +74,6 @@ public class CommonMethods extends Reporter implements Iwrappers {
 			DesiredCapabilities dc = new DesiredCapabilities();
 			dc.setBrowserName(browser);
 			dc.setPlatform(Platform.WINDOWS);
-			// prop.load(new FileInputStream(new
-			// File("frametest/src/main/java/config.properties")));
 
 			// this is for grid run
 			if (bRemote)

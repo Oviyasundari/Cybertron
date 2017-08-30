@@ -11,11 +11,14 @@ public class LoginTest extends FacebookWrapper {
 		SheetName = "login";
 	}
 	LoginPage loginPage = new LoginPage();
+
 	@Test(dataProvider = "xlData", dataProviderClass = FacebookWrapper.class)
-	public void login(String uname, String pwd) {
+	public void login(String uname, String pwd, String type, String expected) {
 		reportStep("Started Executing the class " + this.getClass().getName(), "INFO");
 		loginPage.login(uname, pwd);
-		
-		reportStep("Completed Executing the class " +this.getClass().getName(), "INFO");
+		if (type.equalsIgnoreCase("NEGATIVE")) {
+			loginPage.verifyTextContainsByXpath(loginPage.invalidLoginPageProp.getProperty("loginError"), expected);
+		}
+		reportStep("Completed Executing the class " + this.getClass().getName(), "INFO");
 	}
 }

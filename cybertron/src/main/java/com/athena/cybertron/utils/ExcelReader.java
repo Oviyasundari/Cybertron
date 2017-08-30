@@ -10,19 +10,14 @@ import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-
-
 public class ExcelReader {
-	// static String src;
 	static XSSFWorkbook workbook;
 	static XSSFSheet sheet;
 
 	public static void getWorkBook(String dataSheetName) {
 
 		try {
-//			loadConfig();
-//			FileInputStream file = new FileInputStream(new File("./data/" + prop.getProperty("loginFileName")));
-			FileInputStream fis = new FileInputStream(new File("./input/"+dataSheetName+".xlsx"));
+			FileInputStream fis = new FileInputStream(new File("./input/" + dataSheetName + ".xlsx"));
 			workbook = new XSSFWorkbook(fis);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -30,18 +25,13 @@ public class ExcelReader {
 
 	}
 
-	
 	public static String[][] getExcelSheetData(String fileName, String sheetName) {
-		
+
 		getWorkBook(fileName);
 		sheet = workbook.getSheet(sheetName);
 		return getData();
 	}
 
-	/*
-	 * public String[][] getExcelSheetData(int sheetindex) { getWorkBook(); sheet =
-	 * workbook.getSheetAt(sheetindex); return getData(); }
-	 */
 	public static String[][] getData() {
 		int lastRowNum = sheet.getLastRowNum();
 		String[][] data = new String[lastRowNum + 1][];
@@ -57,10 +47,11 @@ public class ExcelReader {
 		String excelData = "";
 		int lastCellNum = sheet.getRow(rowIndex).getLastCellNum();
 		for (int col = 0; col < lastCellNum; col++) {
-			if (sheet.getRow(rowIndex).getCell(col).getCellType() == XSSFCell.CELL_TYPE_STRING)
+			if (sheet.getRow(rowIndex).getCell(col).getCellType() == XSSFCell.CELL_TYPE_BLANK) {
+				excelData = excelData + sheet.getRow(rowIndex).getCell(col).getStringCellValue() + " ";
+			} else if (sheet.getRow(rowIndex).getCell(col).getCellType() == XSSFCell.CELL_TYPE_STRING) {
 				excelData = excelData + sheet.getRow(rowIndex).getCell(col).getStringCellValue() + "  ";
-
-			else if (sheet.getRow(rowIndex).getCell(col).getCellType() == XSSFCell.CELL_TYPE_NUMERIC) {
+			} else if (sheet.getRow(rowIndex).getCell(col).getCellType() == XSSFCell.CELL_TYPE_NUMERIC) {
 				if (DateUtil.isCellDateFormatted(sheet.getRow(rowIndex).getCell(col))) {
 					SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
 					excelData = excelData + sdf.format(sheet.getRow(rowIndex).getCell(col).getDateCellValue()) + "  ";
@@ -68,9 +59,9 @@ public class ExcelReader {
 					excelData = excelData + new DataFormatter().formatCellValue(sheet.getRow(rowIndex).getCell(col))
 							+ "  ";
 				}
-			} else if (sheet.getRow(rowIndex).getCell(col).getCellType() == XSSFCell.CELL_TYPE_BOOLEAN)
+			} else if (sheet.getRow(rowIndex).getCell(col).getCellType() == XSSFCell.CELL_TYPE_BOOLEAN) {
 				excelData = excelData + sheet.getRow(rowIndex).getCell(col).getBooleanCellValue() + "  ";
-
+			}
 		}
 		String[] excelDataArray = excelData.split("  ");
 		return excelDataArray;
