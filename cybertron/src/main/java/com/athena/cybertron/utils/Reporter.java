@@ -19,7 +19,7 @@ public class Reporter extends TestListenerAdapter {
 	public static ExtentReports report;
 	public static ExtentTest logger;
 	public static RemoteWebDriver driver;
-	public static String resultDirectory = "./output/";
+	public static String resultDirectory = "./output";
 
 	@BeforeSuite
 	public void startReport() {
