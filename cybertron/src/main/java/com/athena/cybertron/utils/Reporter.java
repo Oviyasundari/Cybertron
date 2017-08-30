@@ -19,7 +19,7 @@ public class Reporter extends TestListenerAdapter {
 	public static ExtentReports report;
 	public static ExtentTest logger;
 	public static RemoteWebDriver driver;
-	public static String resultDirectory = "./output";
+	public static String resultDirectory = "./output/";
 
 	@BeforeSuite
 	public void startReport() {
@@ -34,38 +34,31 @@ public class Reporter extends TestListenerAdapter {
 			logger.log(LogStatus.PASS, message);
 		} else if (status.equalsIgnoreCase("FAIL")) {
 			logger.log(LogStatus.FAIL, message);
+			String file_path = captureScreenshot(message.replace(" ","_"));
+			reportStep("Refer " +file_path+" for Screenshot", "INFO");
 		}
 	}
 
 	@Override
 	public void onTestFailure(ITestResult result) {
-		String error_msg = captureScreenshot(result.getName());
-		reportStep(error_msg, "FAIL");
+		String file_path = captureScreenshot(result.getName());
+		reportStep("Refer" +file_path+"for failure Screenshot", "INFO");
 	}
 
-	@Override
-	public void onTestSuccess(ITestResult result) {
-		String error_msg = captureScreenshot(result.getName());
-		reportStep(error_msg, "PASS");
-	}
-
-	@Override
-	public void onTestSkipped(ITestResult result) {
-		String error_msg = captureScreenshot(result.getName());
-		reportStep(error_msg, "PASS");
-	}
-	
 	public String captureScreenshot(String Screenshotname) {
 		TakesScreenshot ts = (TakesScreenshot) driver;
 		File src = ts.getScreenshotAs(OutputType.FILE);
-		String dest = resultDirectory + "/" + Screenshotname + ".png";
+		String dest = resultDirectory + Screenshotname + ".png";
 		File destination = new File(dest);
 		try {
 			if (destination.exists()) {
 				destination.delete();
 			}
+			System.out.println("before copy");
 			FileUtils.copyFile(src, destination);
+			System.out.println("after copy");
 			return dest;
+			
 		} catch (Exception e) {
 			System.out.println("Exception while taking screenshot" + e.getMessage());
 			return e.getMessage();

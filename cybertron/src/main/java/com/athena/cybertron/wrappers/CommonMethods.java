@@ -81,7 +81,7 @@ public class CommonMethods extends Reporter implements Iwrappers {
 
 			// this is for grid run
 			if (bRemote)
-				driver = new RemoteWebDriver(new URL("http://" + sHubUrl + ":" + sHubPort + "/wd/hub"), dc);
+				driver = new RemoteWebDriver(new URL("http//" + sHubUrl + "" + sHubPort + "/wd/hub"), dc);
 			else { // this is for local run
 				if (browser.equalsIgnoreCase("chrome")) {
 					System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver.exe");
@@ -97,11 +97,11 @@ public class CommonMethods extends Reporter implements Iwrappers {
 			driver.get(sUrl);
 
 			primaryWindowHandle = driver.getWindowHandle();
-			reportStep("The browser:" + browser + " launched successfully", "PASS");
+			reportStep("The browser" + browser + " launched successfully", "PASS");
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStep("The browser:" + browser + " could not be launched", "FAIL");
+			reportStep("The browser" + browser + " could not be launched", "FAIL");
 		}
 
 	}
@@ -119,11 +119,12 @@ public class CommonMethods extends Reporter implements Iwrappers {
 		try {
 			driver.findElement(By.id(idValue)).clear();
 			driver.findElement(By.id(idValue)).sendKeys(data);
-			reportStep("The data: " + data + " entered successfully in field :" + idValue, "PASS");
+			reportStep("The data " + data + " entered successfully in field " + idValue, "PASS");
 		} catch (NoSuchElementException e) {
-			reportStep("The data: " + data + " could not be entered in the field :" + idValue, "FAIL");
+			reportStep("The data " + data + " could not be entered in the field " + idValue, "FAIL");
 		} catch (Exception e) {
-			reportStep("Unknown exception occured while entering " + data + " in the field :" + idValue, "FAIL");
+			reportStep("Unknown exception occured while entering " + data + " in the field " + idValue, "FAIL");
+			captureScreenshot("exception occured while entering " + data);
 		}
 	}
 
@@ -131,13 +132,13 @@ public class CommonMethods extends Reporter implements Iwrappers {
 		try {
 			driver.findElement(By.name(nameValue)).clear();
 			driver.findElement(By.name(nameValue)).sendKeys(data);
-			reportStep("The data: " + data + " entered successfully in field :" + nameValue, "PASS");
+			reportStep("The data " + data + " entered successfully in field " + nameValue, "PASS");
 		} catch (NoSuchElementException e) {
-			reportStep("The data: " + data + " could not be entered in the field :" + nameValue, "FAIL");
+			reportStep("The data " + data + " could not be entered in the field " + nameValue, "FAIL");
 		} catch (WebDriverException e) {
-			reportStep("The data: " + data + " could not be entered in the field :" + nameValue, "FAIL");
+			reportStep("The data " + data + " could not be entered in the field " + nameValue, "FAIL");
 		} catch (Exception e) {
-			reportStep("Unknown exception occured while entering " + data + " in the field :" + nameValue, "FAIL");
+			reportStep("Unknown exception occured while entering " + data + " in the field " + nameValue, "FAIL");
 		}
 	}
 
@@ -145,13 +146,13 @@ public class CommonMethods extends Reporter implements Iwrappers {
 		try {
 			driver.findElement(By.xpath(xpathValue)).clear();
 			driver.findElement(By.xpath(xpathValue)).sendKeys(data);
-			reportStep("The data: " + data + " entered successfully in field :" + xpathValue, "PASS");
+			reportStep("The data " + data + " entered successfully in field " + xpathValue, "PASS");
 		} catch (NoSuchElementException e) {
-			reportStep("The data: " + data + " could not be entered in the field :" + xpathValue, "FAIL");
+			reportStep("The data " + data + " could not be entered in the field " + xpathValue, "FAIL");
 		} catch (WebDriverException e) {
-			reportStep("The data: " + data + " could not be entered in the field :" + xpathValue, "FAIL");
+			reportStep("The data " + data + " could not be entered in the field " + xpathValue, "FAIL");
 		} catch (Exception e) {
-			reportStep("Unknown exception occured while entering " + data + " in the field :" + xpathValue, "FAIL");
+			reportStep("Unknown exception occured while entering " + data + " in the field " + xpathValue, "FAIL");
 		}
 
 	}
@@ -167,9 +168,9 @@ public class CommonMethods extends Reporter implements Iwrappers {
 		try {
 			String sText = driver.findElementById(id).getText();
 			if (sText.equalsIgnoreCase(text)) {
-				reportStep("The text: " + sText + " matches with the value :" + text, "PASS");
+				reportStep("The text " + sText + " matches with the value " + text, "PASS");
 			} else {
-				reportStep("The text: " + sText + " did not match with the value :" + text, "FAIL");
+				reportStep("The text " + sText + " did not match with the value " + text, "FAIL");
 			}
 		} catch (Exception e) {
 			reportStep("Unknown exception occured while verifying the title", "FAIL");
@@ -180,9 +181,9 @@ public class CommonMethods extends Reporter implements Iwrappers {
 		try {
 			String sText = driver.findElementByXPath(xpath).getText();
 			if (sText.equalsIgnoreCase(text)) {
-				reportStep("The text: " + sText + " matches with the value :" + text, "PASS");
+				reportStep("The text " + sText + " matches with the value " + text, "PASS");
 			} else {
-				reportStep("The text: " + sText + " did not match with the value :" + text, "FAIL");
+				reportStep("The text " + sText + " did not match with the value " + text, "FAIL");
 			}
 		} catch (Exception e) {
 			reportStep("Unknown exception occured while verifying the title", "FAIL");
@@ -193,9 +194,9 @@ public class CommonMethods extends Reporter implements Iwrappers {
 		try {
 			String sText = driver.findElementByXPath(xpath).getText();
 			if (sText.contains(text)) {
-				reportStep("The text: " + sText + " matches with the value :" + text, "PASS");
+				reportStep("The text " + sText + " matches with the value " + text, "PASS");
 			} else {
-				reportStep("The text: " + sText + " did not match with the value :" + text, "FAIL");
+				reportStep("The text " + sText + " did not match with the value " + text, "FAIL");
 			}
 		} catch (Exception e) {
 			reportStep("Unknown exception occured while verifying the title", "FAIL");
@@ -206,12 +207,12 @@ public class CommonMethods extends Reporter implements Iwrappers {
 		try {
 			String sText = driver.findElementById(id).getText();
 			if (sText.contains(text)) {
-				reportStep("The text: " + sText + " matches with the value :" + text, "PASS");
+				reportStep("The text " + sText + " matches with the value " + text, "PASS");
 			} else {
-				reportStep("The text: " + sText + " did not match with the value :" + text, "FAIL");
+				reportStep("The text " + sText + " did not match with the value " + text, "FAIL");
 			}
 		} catch (Exception e) {
-			reportStep("Unknown exception occured while verifying the text :" + text, "FAIL");
+			reportStep("Unknown exception occured while verifying the text " + text, "FAIL");
 		}
 	}
 
@@ -219,7 +220,7 @@ public class CommonMethods extends Reporter implements Iwrappers {
 		try {
 			driver.findElementById(id).click();
 		} catch (Exception e) {
-			reportStep("Unknown exception occured while clicking the Id :" + id, "FAIL");
+			reportStep("Unknown exception occured while clicking the button " + id, "FAIL");
 		}
 
 	}
@@ -228,7 +229,7 @@ public class CommonMethods extends Reporter implements Iwrappers {
 		try {
 			driver.findElementByClassName(classVal).click();
 		} catch (Exception e) {
-			reportStep("Unknown exception occured while clicking by class name :" + classVal, "FAIL");
+			reportStep("Unknown exception occured while clicking the button by class name " + classVal, "FAIL");
 		}
 
 	}
@@ -237,7 +238,7 @@ public class CommonMethods extends Reporter implements Iwrappers {
 		try {
 			driver.findElementByName(name).click();
 		} catch (Exception e) {
-			reportStep("Unknown exception occured while clicking by name : " + name, "FAIL");
+			reportStep("Unknown exception occured while clicking the button by name  " + name, "FAIL");
 		}
 
 	}
@@ -246,7 +247,7 @@ public class CommonMethods extends Reporter implements Iwrappers {
 		try {
 			driver.findElementByLinkText(name).click();
 		} catch (Exception e) {
-			reportStep("Unknown exception occured while clicking by link : " + name, "FAIL");
+			reportStep("Unknown exception occured while clicking by link  " + name, "FAIL");
 		}
 
 	}
@@ -255,7 +256,7 @@ public class CommonMethods extends Reporter implements Iwrappers {
 		try {
 			driver.findElementByXPath(xpathVal).click();
 		} catch (Exception e) {
-			reportStep("Unknown exception occured while clicking by xpath : " + xpathVal, "FAIL");
+			reportStep("Unknown exception occured while clicking the button by xpath  " + xpathVal, "FAIL");
 		}
 
 	}
@@ -266,7 +267,7 @@ public class CommonMethods extends Reporter implements Iwrappers {
 			sText = driver.findElementById(idVal).getText();
 			return sText;
 		} catch (Exception e) {
-			reportStep("Unknown exception occured while fetching text by id : " + idVal, "FAIL");
+			reportStep("Unknown exception occured while fetching text by id  " + idVal, "FAIL");
 		}
 
 		return sText;
@@ -279,7 +280,7 @@ public class CommonMethods extends Reporter implements Iwrappers {
 			sText = driver.findElementByXPath(xpathVal).getText();
 			return sText;
 		} catch (Exception e) {
-			reportStep("Unknown exception occured while fetching text by xpath : " + xpathVal, "FAIL");
+			reportStep("Unknown exception occured while fetching text by xpath  " + xpathVal, "FAIL");
 		}
 
 		return sText;
@@ -331,7 +332,7 @@ public class CommonMethods extends Reporter implements Iwrappers {
 			Alert alert = driver.switchTo().alert();
 			alert.accept();
 		} catch (Exception e) {
-			reportStep("Unknown exception occured while accepting the alert : ", "FAIL");
+			reportStep("Unknown exception occured while accepting the alert  ", "FAIL");
 		}
 
 	}
