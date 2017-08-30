@@ -34,15 +34,15 @@ public class Reporter extends TestListenerAdapter {
 			logger.log(LogStatus.PASS, message);
 		} else if (status.equalsIgnoreCase("FAIL")) {
 			logger.log(LogStatus.FAIL, message);
-			String file_path = captureScreenshot(message.replace(" ","_"));
-			reportStep("Refer " +file_path+" for Screenshot", "INFO");
+			String file_path = captureScreenshot(message.replace(" ", "_"));
+			reportStep("Refer " + file_path + " for Screenshot", "INFO");
 		}
 	}
 
 	@Override
 	public void onTestFailure(ITestResult result) {
 		String file_path = captureScreenshot(result.getName());
-		reportStep("Refer" +file_path+"for failure Screenshot", "INFO");
+		reportStep("Refer" + file_path + "for failure Screenshot", "INFO");
 	}
 
 	public String captureScreenshot(String Screenshotname) {
@@ -54,11 +54,8 @@ public class Reporter extends TestListenerAdapter {
 			if (destination.exists()) {
 				destination.delete();
 			}
-			System.out.println("before copy");
 			FileUtils.copyFile(src, destination);
-			System.out.println("after copy");
 			return dest;
-			
 		} catch (Exception e) {
 			System.out.println("Exception while taking screenshot" + e.getMessage());
 			return e.getMessage();
