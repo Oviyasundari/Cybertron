@@ -154,8 +154,9 @@ public class CommonMethods extends Reporter implements Iwrappers {
 	}
 
 	public boolean verifyTitle(String title) {
-		if (driver.getTitle().contains(title)) {
+		if (driver.getTitle().equals(title)) {
 			return true;
+				
 		}
 		return false;
 	}
