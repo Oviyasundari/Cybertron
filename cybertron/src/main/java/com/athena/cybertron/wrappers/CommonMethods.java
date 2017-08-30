@@ -26,7 +26,7 @@ import com.athena.cybertron.utils.Reporter;
 public class CommonMethods extends Reporter implements Iwrappers {
 
 	public static Properties prop;
-	public String sUrl, primaryWindowHandle, sHubUrl, sHubPort;
+	public String primaryWindowHandle;
 	
 	public static void loadConfig() {
 		prop = new Properties();
@@ -56,8 +56,8 @@ public class CommonMethods extends Reporter implements Iwrappers {
 
 		loadConfig();
 		String browser = prop.getProperty("browser");
-		sUrl = prop.getProperty("baseUrl");
-		invokeApp(browser, false);
+		String productUrl = prop.getProperty("productUrl");
+		invokeApp(browser, productUrl, false);
 	}
 
 	/**
@@ -69,7 +69,7 @@ public class CommonMethods extends Reporter implements Iwrappers {
 	 * 
 	 */
 
-	public void invokeApp(String browser, boolean bRemote) {
+	public void invokeApp(String browser, String url, boolean bRemote) {
 		try {
 			DesiredCapabilities dc = new DesiredCapabilities();
 			dc.setBrowserName(browser);
@@ -77,7 +77,7 @@ public class CommonMethods extends Reporter implements Iwrappers {
 
 			// this is for grid run
 			if (bRemote)
-				driver = new RemoteWebDriver(new URL("http//" + sHubUrl + "" + sHubPort + "/wd/hub"), dc);
+				driver = new RemoteWebDriver(new URL("http//" + prop.getProperty("hubUrl") + "" + prop.getProperty("port") + "/wd/hub"), dc);
 			else { // this is for local run
 				if (browser.equalsIgnoreCase("chrome")) {
 					System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver.exe");
@@ -90,7 +90,7 @@ public class CommonMethods extends Reporter implements Iwrappers {
 
 			driver.manage().window().maximize();
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-			driver.get(sUrl);
+			driver.get(url);
 
 			primaryWindowHandle = driver.getWindowHandle();
 			reportStep("The browser" + browser + " launched successfully", "PASS");
